@@ -2,6 +2,10 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.anvil)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
@@ -40,6 +44,7 @@ android {
 }
 
 dependencies {
+    ksp(libs.circuit.codegen)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -56,4 +61,39 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    api(libs.kotlinx.serialization.core)
+
+    //Datastore
+    implementation(libs.androidx.datastore.core)
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore.preferences.core)
+
+    //Anvil
+    implementation(libs.anvil.annotations)
+    implementation(libs.anvil.annotationsOptional)
+
+    //Circuit
+    implementation(libs.circuit.backstack)
+    implementation(libs.circuit.codegenAnnotations)
+    implementation(libs.circuit.foundation)
+    implementation(libs.circuit.overlay)
+    implementation(libs.circuit.retained)
+    implementation(libs.circuit.runtime)
+    implementation(libs.circuit.runtime.presenter)
+    implementation(libs.circuit.runtime.screen)
+    implementation(libs.circuit.runtime.ui)
+    implementation(libs.circuitx.android)
+    implementation(libs.circuitx.gestureNav)
+    implementation(libs.circuitx.overlays)
+
+    //Coil
+    implementation(libs.coil.base)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.compose.base)
+    implementation(libs.coil.default)
+    implementation(libs.coil.gif)
+
+    //okhttp
+    implementation(libs.okhttp.core)
+    debugImplementation(libs.okhttp.debug.loggingInterceptor)
 }
